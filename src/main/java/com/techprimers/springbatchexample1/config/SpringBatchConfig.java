@@ -1,6 +1,7 @@
 package com.techprimers.springbatchexample1.config;
 
 import com.techprimers.springbatchexample1.model.User;
+import com.techprimers.springbatchexample1.util.CustomFlatFileItemReader;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -15,18 +16,24 @@ import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 
 @Configuration
 @EnableBatchProcessing
 public class SpringBatchConfig {
+
+    @Value("classpath:/users.csv")
+    private Resource usersResource;
 
     @Bean
     public Job job(JobBuilderFactory jobBuilderFactory,
@@ -52,10 +59,12 @@ public class SpringBatchConfig {
 
     @Bean
     public FlatFileItemReader<User> itemReader() throws IOException {
-        Resource resource = new UrlResource("file:src/main/resources/users.csv");
+//        Resource resource = new UrlResource("file:src/main/resources/users.csv");
+//        InputStream inputStream = usersResource.getInputStream();
+//        InputStream inputStream = resource.getInputStream();
         FlatFileItemReader<User> flatFileItemReader = new FlatFileItemReader<>();
 //        flatFileItemReader.setResource(new FileSystemResource("src/main/resources/users.csv"));
-        flatFileItemReader.setResource(new UrlResource(resource.getURL()));
+        flatFileItemReader.setResource(usersResource);
         flatFileItemReader.setName("CSV-Reader");
         flatFileItemReader.setLinesToSkip(1);
         flatFileItemReader.setLineMapper(lineMapper());
