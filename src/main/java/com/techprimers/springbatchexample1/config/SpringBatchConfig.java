@@ -18,6 +18,11 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 @Configuration
 @EnableBatchProcessing
@@ -46,10 +51,11 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    public FlatFileItemReader<User> itemReader() {
-
+    public FlatFileItemReader<User> itemReader() throws IOException {
+        Resource resource = new UrlResource("file:src/main/resources/users.csv");
         FlatFileItemReader<User> flatFileItemReader = new FlatFileItemReader<>();
-        flatFileItemReader.setResource(new FileSystemResource("src/main/resources/users.csv"));
+//        flatFileItemReader.setResource(new FileSystemResource("src/main/resources/users.csv"));
+        flatFileItemReader.setResource(new UrlResource(resource.getURL()));
         flatFileItemReader.setName("CSV-Reader");
         flatFileItemReader.setLinesToSkip(1);
         flatFileItemReader.setLineMapper(lineMapper());

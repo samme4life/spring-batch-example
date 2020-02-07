@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.techprimers</groupId>
-	<artifactId>spring-batch-example-1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>spring-batch-example</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>spring-batch-example-1</name>
-	<description>Demo project for Spring Boot</description>
+	<name>spring-batch-example</name>
+	<description>Demo project for Spring Batch Processing</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -58,7 +58,10 @@
 			<artifactId>spring-batch-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
