@@ -17,5 +17,5 @@ This codebase is to implement a basic spring batch operation. The job launcher i
 * using command prompt go to the root of the application and themvn clean package 
 * mvn clean package 
 * docker build -t spring-batch-example .
-* docker tag spring-batch-example <hub_user>/<repo_name>:<tag>
+* "docker tag spring-batch-example <hub_user>/<repo_name>:<tag>"
 * docker push <hub_user>/<repo_name>:<tag>
