@@ -10,9 +10,9 @@ This codebase is to implement a basic spring batch operation. The job launcher i
 	
 ## How to Create the Docker image and push it into DockerHub
 
-# Prerequisits
+### Prerequisits
 * Docker should be installed in your PC
-# Steps
+### Steps
 * using command prompt go to the root of the application and themvn clean package 
 * docker build -t spring-batch-example .
 * docker tag spring-batch-example <hub-user>/<repo-name>[:<tag>]
