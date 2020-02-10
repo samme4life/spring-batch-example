@@ -1,5 +1,5 @@
 ## Sample Spring Batch Application which demonstraits processing a csv file into DB
-This is a result of a research done on "How to Deploy a Srping Batch Operation on OpenShift and Execute it periodically using a CronJob".
+This is a result of a research done on "How to Deploy a Srping Batch - Spring Boot application on OpenShift and Execute it periodically using a CronJob".
 
 The other related codebase resides at "https://github.com/samme4life/openshift-cronjob".
 
