@@ -14,7 +14,7 @@ This codebase is to implement a basic spring batch operation. The job launcher i
 * Maven is configured in your system
 * Docker should be installed in your PC
 ### Steps
-* using command prompt go to the root of the application and themvn clean package 
+* using command prompt go to the root of the application
 * mvn clean package 
 * docker build -t spring-batch-example .
 * docker tag spring-batch-example <hub_user>/<repo_name>:<tag>
